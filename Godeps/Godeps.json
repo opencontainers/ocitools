@@ -1,7 +1,6 @@
 {
 	"ImportPath": "github.com/opencontainers/runtime-tools",
 	"GoVersion": "go1.7",
-	"GodepVersion": "v79",
 	"Packages": [
 		"./..."
 	],
@@ -34,8 +33,8 @@
 		},
 		{
 			"ImportPath": "github.com/opencontainers/runtime-spec/specs-go",
-			"Comment": "v1.0.0",
-			"Rev": "02137cd4e50b37a01665e1731fcd4ac2d2178230"
+			"Comment": "v1.0.1",
+			"Rev": "4e3b9264a330d094b0386c3703c5f379119711e8"
 		},
 		{
 			"ImportPath": "github.com/pmezard/go-difflib/difflib",
@@ -49,8 +48,8 @@
 		},
 		{
 			"ImportPath": "github.com/sirupsen/logrus",
-			"Comment": "1.0.2",
-			"Rev": "a3f95b5c423586578a4e099b11a46c2479628cac"
+			"Comment": "v1.0.3",
+			"Rev": "f006c2ac4710855cf0f916dd6b77acf6b048dc6e"
 		},
 		{
 			"ImportPath": "github.com/stretchr/testify/assert",
@@ -63,8 +62,8 @@
 		},
 		{
 			"ImportPath": "github.com/urfave/cli",
-			"Comment": "v1.19.1",
-			"Rev": "0bdeddeeb0f650497d603c4ad7b20cfe685682f6"
+			"Comment": "v1.20.0",
+			"Rev": "cfb38830724cc34fedffe9a2a29fb54fa9169cd1"
 		},
 		{
 			"ImportPath": "github.com/xeipuuv/gojsonpointer",
