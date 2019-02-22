@@ -60,6 +60,10 @@ func New(os string) (generator Generator, err error) {
 			},
 		}
 		config.Windows = &rspec.Windows{
+			LayerFolders: []string{
+				"C:\\Layers\\layer1",
+				"C:\\Layers\\layer2",
+			},
 			IgnoreFlushesDuringBoot: true,
 			Network: &rspec.WindowsNetwork{
 				AllowUnqualifiedDNSQuery: true,
