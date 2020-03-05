@@ -15,7 +15,7 @@ tool:
 
 .PHONY: runtimetest
 runtimetest:
-	CGO_ENABLED=0 go build -installsuffix cgo -tags "$(BUILDTAGS)" -ldflags "-X main.gitCommit=${COMMIT} -X main.version=${VERSION}" -o runtimetest ./cmd/runtimetest
+	CGO_ENABLED=0 GOOS=linux go build -installsuffix cgo -tags "$(BUILDTAGS)" -ldflags "-X main.gitCommit=${COMMIT} -X main.version=${VERSION}" -o runtimetest ./cmd/runtimetest
 
 .PHONY: man
 man:

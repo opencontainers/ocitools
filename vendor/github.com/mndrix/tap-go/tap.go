@@ -18,7 +18,7 @@
 //		1..2
 //		ok 1 - first test
 //		ok 2 - second test
-package tap
+package tap // import "github.com/mndrix/tap-go"
 
 import (
 	"fmt"
