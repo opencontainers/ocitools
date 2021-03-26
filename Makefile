@@ -61,7 +61,18 @@ $(VALIDATION_TESTS): %.t: %.go
 print-validation-tests:
 	@echo $(VALIDATION_TESTS)
 
-.PHONY: test .gofmt .govet .golint print-validation-tests
+.PHONY: test .gofmt .govet .golint print-validation-tests vendor validate-vendor
+
+vendor:
+	GO111MODULE=on go mod tidy
+	GO111MODULE=on go mod vendor
+
+validate-vendor: vendor
+	DIFF=$$(git status --porcelain -- vendor/ go.mod go.sum); \
+	if test -n "$${DIFF}"; then \
+    	printf "vendor validation failed: these files were modified:\n%s\n" "$${DIFF}"; \
+    	exit 1; \
+    fi
 
 PACKAGES = $(shell go list ./... | grep -v vendor)
 test: .gofmt .govet .golint .gotest
