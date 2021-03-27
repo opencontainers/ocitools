@@ -29,8 +29,11 @@ func main() {
 	if err != nil {
 		util.Fatal(err)
 	}
-
-	r.SetID(uuid.NewV4().String())
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	r.SetID(uid.String())
 	g, err := util.GetDefaultGenerator()
 	if err != nil {
 		util.Fatal(err)

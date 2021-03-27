@@ -8,8 +8,8 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/blang/semver",
-			"Comment": "v3.5.0",
-			"Rev": "b38d23b8782a487059e8fc8773e9a5b228a77cb6"
+			"Comment": "v3.5.1-4-g3c10740",
+			"Rev": "3c1074078d32d767e08ab2c8564867292da86926"
 		},
 		{
 			"ImportPath": "github.com/davecgh/go-spew/spew",
@@ -18,7 +18,8 @@
 		},
 		{
 			"ImportPath": "github.com/hashicorp/errwrap",
-			"Rev": "7554cd9344cec97297fa6649b055a8c98c2a1e55"
+			"Comment": "v1.0.0",
+			"Rev": "8a6fb523712970c966eefc6b39ed2c5e74880354"
 		},
 		{
 			"ImportPath": "github.com/hashicorp/go-multierror",
@@ -55,8 +56,8 @@
 		},
 		{
 			"ImportPath": "github.com/satori/go.uuid",
-			"Comment": "v1.1.0",
-			"Rev": "879c5887cd475cd7864858769793b2ceb0d44feb"
+			"Comment": "v1.2.0-12-gb2ce238",
+			"Rev": "b2ce2384e17bbe0c6d34077efa39dbab3e09123b"
 		},
 		{
 			"ImportPath": "github.com/sirupsen/logrus",
@@ -74,8 +75,8 @@
 		},
 		{
 			"ImportPath": "github.com/urfave/cli",
-			"Comment": "v1.19.1",
-			"Rev": "0bdeddeeb0f650497d603c4ad7b20cfe685682f6"
+			"Comment": "v1.20.0-81-gb67dcf9",
+			"Rev": "b67dcf995b6a7b7f14fad5fcb7cc5441b05e814b"
 		},
 		{
 			"ImportPath": "github.com/xeipuuv/gojsonpointer",
@@ -87,7 +88,8 @@
 		},
 		{
 			"ImportPath": "github.com/xeipuuv/gojsonschema",
-			"Rev": "0c8571ac0ce161a5feb57375a9cdf148c98c0f70"
+			"Comment": "v1.1.0",
+			"Rev": "f971f3cd73b2899de6923801c147f075263e0c50"
 		},
 		{
 			"ImportPath": "golang.org/x/sys/unix",

@@ -38,8 +38,11 @@ func main() {
 		rspecs.Spec
 		Unknown string `json:"unknown,omitempty"`
 	}
-
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 	basicConfig, err := util.GetDefaultGenerator()
 	if err != nil {
 		util.Fatal(err)

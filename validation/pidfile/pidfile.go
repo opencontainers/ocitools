@@ -34,7 +34,11 @@ func main() {
 		Config:  g,
 		Actions: util.LifecycleActionCreate | util.LifecycleActionStart | util.LifecycleActionDelete,
 		PreCreate: func(r *util.Runtime) error {
-			r.SetID(uuid.NewV4().String())
+			uid, err := uuid.NewV4()
+			if err != nil {
+				util.Fatal(err)
+			}
+			r.SetID(uid.String())
 			r.PidFile = tempPidFile
 			return nil
 		},

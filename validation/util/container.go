@@ -80,7 +80,11 @@ func (r *Runtime) Create() (err error) {
 		args = append(args, r.ID)
 	}
 	cmd := exec.Command(r.RuntimeCommand, args...)
-	id := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		return err
+	}
+	id := uid.String()
 	r.stdout, err = os.OpenFile(filepath.Join(r.bundleDir(), fmt.Sprintf("stdout-%s", id)), os.O_CREATE|os.O_EXCL|os.O_RDWR, 0600)
 	if err != nil {
 		return err

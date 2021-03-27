@@ -23,7 +23,11 @@ func main() {
 	defer os.RemoveAll(bundleDir)
 
 	targetErr := specerror.NewError(specerror.KillNonCreateRunHaveNoEffect, fmt.Errorf("attempting to send a signal to a container that is neither `created` nor `running` MUST have no effect on the container"), rspecs.Version)
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 	g, err := util.GetDefaultGenerator()
 	if err != nil {
 		util.Fatal(err)

@@ -34,7 +34,11 @@ func main() {
 		util.Fatal(err)
 	}
 	runningConfig.SetProcessArgs([]string{"sleep", "30"})
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 	testRuntime, _ := util.NewRuntime(util.RuntimeCommand, bundleDir)
 	cases := []struct {
 		config      *generate.Generator

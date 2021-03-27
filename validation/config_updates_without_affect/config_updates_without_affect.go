@@ -31,7 +31,11 @@ func main() {
 	}
 
 	testPath := filepath.Join(bundleDir, "test.json")
-	r.SetID(uuid.NewV4().String())
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	r.SetID(uid.String())
 	// generate a config has all the testing properties
 	g, err := util.GetDefaultGenerator()
 	if err != nil {

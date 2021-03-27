@@ -83,7 +83,11 @@ func main() {
 	if err != nil {
 		util.Fatal(err)
 	}
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 	defer os.RemoveAll(bundleDir)
 
 	var containerPid int

@@ -25,7 +25,11 @@ func main() {
 	config := util.LifecycleConfig{
 		Actions: util.LifecycleActionCreate | util.LifecycleActionStart | util.LifecycleActionDelete,
 		PreCreate: func(r *util.Runtime) error {
-			r.SetID(uuid.NewV4().String())
+			uid, err := uuid.NewV4()
+			if err != nil {
+				util.Fatal(err)
+			}
+			r.SetID(uid.String())
 			g, err := util.GetDefaultGenerator()
 			if err != nil {
 				util.Fatal(err)

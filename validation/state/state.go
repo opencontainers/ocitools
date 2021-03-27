@@ -22,7 +22,11 @@ func main() {
 		util.Fatal(err)
 	}
 	g.SetProcessArgs([]string{"true"})
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 
 	cases := []struct {
 		id          string

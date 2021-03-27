@@ -32,7 +32,11 @@ func main() {
 	}
 	g.AddPreStartHook(prestart)
 	g.SetProcessArgs([]string{"sh", "-c", fmt.Sprintf("touch %s", "/output")})
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 
 	config := util.LifecycleConfig{
 		Config:    g,

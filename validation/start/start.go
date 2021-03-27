@@ -25,7 +25,11 @@ func main() {
 	}
 	defer os.RemoveAll(bundleDir)
 
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 
 	r, err := util.NewRuntime(util.RuntimeCommand, bundleDir)
 	if err != nil {

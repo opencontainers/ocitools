@@ -204,7 +204,11 @@ func RuntimeInsideValidate(g *generate.Generator, t *tap.T, f PreFunc) (err erro
 		return err
 	}
 
-	r.SetID(uuid.NewV4().String())
+	uid, err := uuid.NewV4()
+	if err != nil {
+		return err
+	}
+	r.SetID(uid.String())
 	err = r.Create()
 	if err != nil {
 		os.Stderr.WriteString("failed to create the container\n")
@@ -281,7 +285,11 @@ func RuntimeOutsideValidate(g *generate.Generator, t *tap.T, f AfterFunc) error 
 		return err
 	}
 
-	r.SetID(uuid.NewV4().String())
+	uid, err := uuid.NewV4()
+	if err != nil {
+		return err
+	}
+	r.SetID(uid.String())
 	err = r.Create()
 	if err != nil {
 		os.Stderr.WriteString("failed to create the container\n")

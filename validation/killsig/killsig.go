@@ -28,7 +28,11 @@ func main() {
 	}
 	defer os.RemoveAll(bundleDir)
 
-	containerID := uuid.NewV4().String()
+	uid, err := uuid.NewV4()
+	if err != nil {
+		util.Fatal(err)
+	}
+	containerID := uid.String()
 	sigConfig, err := util.GetDefaultGenerator()
 	if err != nil {
 		os.RemoveAll(bundleDir)
