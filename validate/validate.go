@@ -478,11 +478,28 @@ func (v *Validator) CheckRlimits() (errs error) {
 func supportedMountTypes(OS string, hostSpecific bool) (map[string]bool, error) {
 	supportedTypes := make(map[string]bool)
 
-	if OS != "linux" && OS != "windows" {
-		logrus.Warnf("%v is not supported to check mount type", OS)
-		return nil, nil
-	} else if OS == "windows" {
-		supportedTypes["ntfs"] = true
+	if OS == "solaris" {
+		f, err := os.Open("/etc/vfstab")
+		if err != nil {
+			return nil, err
+		}
+		defer f.Close()
+
+		s := bufio.NewScanner(f)
+		for s.Scan() {
+			if err := s.Err(); err != nil {
+				return supportedTypes, err
+			}
+
+			text := s.Text()
+			parts := strings.Split(text, "\t")
+			if len(parts) > 1 {
+				supportedTypes[parts[1]] = true
+			} else {
+				supportedTypes[parts[0]] = true
+			}
+		}
+
 		return supportedTypes, nil
 	}
 
