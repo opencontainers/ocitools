@@ -656,6 +656,13 @@ func TestCheckPlatform(t *testing.T) {
 			platform: "windows",
 			expected: specerror.NonError,
 		},
+		{
+			val: rspec.Spec{
+				Version: "1.0.0",
+			},
+			platform: "solaris",
+			expected: specerror.NonError,
+		},
 	}
 	for _, c := range cases {
 		v, err := NewValidator(&c.val, ".", false, c.platform)
