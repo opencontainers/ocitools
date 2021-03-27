@@ -687,23 +687,28 @@ func (v *Validator) CheckAnnotations() (errs error) {
 	return
 }
 
-// CapValid checks whether a capability is valid
+// CapValid checks whether a capability is valid. This only really checks
+// anything with hostSpecific, otherwise we just ignore everything (because
+// capabilities are now free-form strings).
 func CapValid(c string, hostSpecific bool) error {
-	isValid := false
+	// Cannot speak to whether the capability makes sense.
+	if !hostSpecific {
+		return nil
+	}
 
+	isValid := false
 	if !strings.HasPrefix(c, "CAP_") {
 		return fmt.Errorf("capability %s must start with CAP_", c)
 	}
 	for _, cap := range capability.List() {
 		if c == fmt.Sprintf("CAP_%s", strings.ToUpper(cap.String())) {
-			if hostSpecific && cap > LastCap() {
+			if cap > capability.CAP_LAST_CAP {
 				return fmt.Errorf("%s is not supported on the current host", c)
 			}
 			isValid = true
 			break
 		}
 	}
-
 	if !isValid {
 		return fmt.Errorf("invalid capability: %s", c)
 	}

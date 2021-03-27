@@ -1100,7 +1100,7 @@ func (g *Generator) SetupPrivileged(privileged bool) {
 	if privileged { // Add all capabilities in privileged mode.
 		var finalCapList []string
 		for _, cap := range capability.List() {
-			if g.HostSpecific && cap > validate.LastCap() {
+			if g.HostSpecific && cap > capability.CAP_LAST_CAP {
 				continue
 			}
 			finalCapList = append(finalCapList, fmt.Sprintf("CAP_%s", strings.ToUpper(cap.String())))
