@@ -28,6 +28,7 @@ _testmain.go
 oci
 /oci-runtime-tool
 /runtimetest
+*.t
 
 *.1
 *.patch
