@@ -171,19 +171,23 @@ func (v *Validator) CheckJSONSchema() (errs error) {
 func (v *Validator) CheckRoot() (errs error) {
 	logrus.Debugf("check root")
 
-	if v.platform == "windows" && v.spec.Windows != nil {
-		if v.spec.Windows.HyperV != nil {
-			if v.spec.Root != nil {
+	if v.platform == "windows" {
+		if v.spec.Windows != nil {
+			if v.spec.Windows.HyperV != nil {
+				if v.spec.Root != nil {
+					errs = multierror.Append(errs,
+						specerror.NewError(specerror.RootOnHyperVNotSet, fmt.Errorf("for Hyper-V containers, Root must not be set"), rspec.Version))
+				}
+				return
+			} else if v.spec.Root == nil {
 				errs = multierror.Append(errs,
-					specerror.NewError(specerror.RootOnHyperVNotSet, fmt.Errorf("for Hyper-V containers, Root must not be set"), rspec.Version))
+					specerror.NewError(specerror.RootOnWindowsRequired, fmt.Errorf("on Windows, for Windows Server Containers, this field is REQUIRED"), rspec.Version))
+				return
 			}
-			return
 		} else if v.spec.Root == nil {
-			errs = multierror.Append(errs,
-				specerror.NewError(specerror.RootOnWindowsRequired, fmt.Errorf("on Windows, for Windows Server Containers, this field is REQUIRED"), rspec.Version))
 			return
 		}
-	} else if v.platform != "windows" && v.spec.Root == nil {
+	} else if v.spec.Root == nil {
 		errs = multierror.Append(errs,
 			specerror.NewError(specerror.RootOnNonWindowsRequired, fmt.Errorf("on all other platforms, this field is REQUIRED"), rspec.Version))
 		return
