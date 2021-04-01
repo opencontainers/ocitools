@@ -193,6 +193,10 @@ read the configuration from `config.json`.
   Drop hugepage rsource limits. Just need to specify PAGESIZE. e.g. --linux-hugepage-limits-drop=4MB
   This option can be specified multiple times.
 
+**--linux-intelRdt-closid**=""
+  RDT Class of Service, i.e. group under the resctrl pseudo-filesystem, which
+  to associate the container with.
+
 **--linux-intelRdt-l3CacheSchema**=""
   Specifies the schema for L3 cache id and capacity bitmask.
 

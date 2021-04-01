@@ -335,6 +335,7 @@ _oci-runtime-tool_generate() {
 		--linux-gidmappings
 		--linux-hugepage-limits-add
 		--linux-hugepage-limits-drop
+		--linux-intelRdt-closid
 		--linux-intelRdt-l3CacheSchema
 		--linux-masked-paths
 		--linux-mem-kernel-limit

@@ -604,6 +604,12 @@ func (g *Generator) SetLinuxCgroupsPath(path string) {
 	g.Config.Linux.CgroupsPath = path
 }
 
+// SetLinuxIntelRdtClosID sets g.Config.Linux.IntelRdt.ClosID
+func (g *Generator) SetLinuxIntelRdtClosID(clos string) {
+	g.initConfigLinuxIntelRdt()
+	g.Config.Linux.IntelRdt.ClosID = clos
+}
+
 // SetLinuxIntelRdtL3CacheSchema sets g.Config.Linux.IntelRdt.L3CacheSchema
 func (g *Generator) SetLinuxIntelRdtL3CacheSchema(schema string) {
 	g.initConfigLinuxIntelRdt()
